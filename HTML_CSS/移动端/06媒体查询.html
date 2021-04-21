@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* @media  媒体类型(all,print,screen,) 关键字(and,not,only) (媒体特性) { CSS-Code;}*/
+        /* 注意 and后面必须要有空格 
+        媒体查询从小到大或者从大到小*/
+        
+        @media screen and (max-width: 539px) {
+            body {
+                background-color: blue;
+            }
+        }
+        
+        @media screen and ( max-width: 969px) and (min-width:540px) {
+            body {
+                background-color: green;
+            }
+        }
+        
+        @media screen and ( min-width:970px) {
+            body {
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>我是一个快乐的小神仙，啦啦啦，啦啦啦，快乐的小神仙</h1>
+    <!-- 等比例缩放+页面布局文字随着屏幕大小变化而变化 -->
+</body>
+
+</html>

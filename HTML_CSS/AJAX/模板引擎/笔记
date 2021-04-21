@@ -1,0 +1,17 @@
+模板引擎在浏览器也有art-template
+
+在ajax中使用步骤
+1.下载art-template末班引擎库文件并在HTML文件中引入库文件
+    <script src="./js/template-web.js"></script>
+2. 准备art-template模板
+    <script id="tp1" type="text/html">
+        <div class="box"></div>
+    </script>
+3.告诉模板引擎将哪个模板与哪个数据进行拼接
+    var html=template('tp1',{user:'zhangsan'})
+4.将拼接好的html字符串添加到页面
+    document.getElementById('container').innerHTML=html;
+5.通过模板语法告诉模板引擎，数据和html字符串要如何拼接
+    <script id="tp1" type="text/html">
+        <div class="box">{{ user }}</div>
+    </script>

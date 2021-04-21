@@ -1,0 +1,27 @@
+ 
+// less变量   大小写敏感，不能以数字开头   后代直接写父辈括号里面，，如果伪元素选择器，交集选择器等要加&
+// @变量名：值;   
+// 使用easy less插件可以直接按保存就会自动生成Myless.css文件
+// less里面可以相互嵌套,less比css更简单，并且权重设计更好，权重设计不需要太过于考虑
+@color:pink;
+body{
+    background-color: @color;
+    &:hover{
+        background-color: blue;
+    }
+    &::before{
+        content: "";
+    }
+}
+p{
+    height: 200px - 50;  //150px
+    width: 200px;
+    border: 1px solid black;
+    a{
+        text-decoration: none;
+    }
+}
+
+// less运算，任何数字，颜色，或者变量都可以参与到运算中，
+//运算符之间要有空格隔开，带单位的都与第一个值单位为准
+@border:2px + 2; //4px

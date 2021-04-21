@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取其他样式相关属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 1px solid black;
+            margin: 20px;
+            padding: 10px;
+        }
+        /* 滚动条 */
+        
+        #example01 {
+            margin-left: 50px;
+            width: 300px;
+            height: 400px;
+            border: 1px solid black;
+        }
+        
+        #info {
+            margin: 10px auto;
+            width: 300px;
+            height: 300px;
+            overflow: scroll;
+            background-color: paleturquoise;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var btn01 = document.getElementById("btn01");
+            var box1 = document.getElementById("box1");
+            var box2 = document.getElementById("box2");
+            var box2_1 = document.getElementById("box2_1");
+            var box2_1_1 = document.getElementById("box2_1_1");
+            var checkbox = document.getElementById("checkBox");
+            var info = document.getElementById("info");
+            var sub = document.getElementById("sub");
+            btn01.onclick = function() {
+                /*element.clientHeight 返回元素的可见高度。 
+                 * element.clientWidth 返回元素的可见宽度。
+                 * 获取元素的高度宽度,不带px单位，包括内边距 ,只读不可修改
+                 * *120 120 width（height）+padding
+                 */
+                //alert(box1.clientHeight + "," + box1.clientWidth);
+
+                /*
+                 * offsetHeight,offsetWidth可以获取div整个的大小，
+                 * 包括加上border，margin的大小
+                 * 122 122 +padding+border
+                 */
+                //alert(box1.offsetHeight + "," + box1.offsetWidth);
+
+                /*
+                 *offsetLeft当前元素相对于其定位元素的水平偏移量,offsetTop当前元素相对于定位元素的垂直偏移位置
+                 *offsetParent 定位最近开启定位的祖先元素  谁开启定位(即只要是position不是static)则显示谁，不开启就一直显示HTMLBodyElement
+                 * box1  水平偏移：28<br>垂直偏移：88<br>偏移容器：[object HTMLBodyElement]
+                 * box2_1_1  水平偏移：20<br>垂直偏移：10<br>偏移容器：[object HTMLDivElement]
+                 */
+                alert("水平偏移：" + box2_1_1.offsetLeft);
+            }
+            alert(box2_1.offsetHeight + ',' + box2_1.offsetWidth + ',' + box2_1.offsetTop + ',' + box2_1.offsetLeft + ',' + box2_1.offsetParent);
+
+            /*
+             *
+             *滚动条案例，拖到下面才允许点击注册
+             * 
+             */
+            info.onscroll = function() {
+                var sT = info.scrollTop;
+                var sH = info.scrollHeight;
+                var cH = info.clientWidth;
+                if ((sH - sT) != cH) {
+                    checkbox.disabled = true;
+                    sub.disabled = true;
+
+                } else {
+                    checkbox.disabled = false;
+                    sub.disabled = false;
+                }
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <button id="btn01" style="width: 50px; ">点我一下</button>
+    <br/><br/>
+    <div id="box1"></div>
+    <div id="box2" style="width: 200px; height: 200px; padding: 10px; background-color: red;margin-left: 80px; position:relative;">
+        <div id="box2_1" style="width: 100px; height: 100px; background-color: rgb(255, 123, 0); position:absolute;">
+            <div id="box2_1_1" style="width: 50px; height: 50px; background-color: rgb(187, 255, 0); margin: 10px 0 0 20px;"></div>
+        </div>
+    </div>
+
+
+    <br>-----------------------------------------滚动条案例--------------------------------<br>
+
+    <div id="example01">
+        <h3>欢迎注册</h3>
+        <p id="info">登录您的阿里云管理控制台,点击页面右上角个人信息,展开面板,选择里面的“accesskeys”,或者您也可以直接登录访问https://ak-console.... 2.进入AccessKeys管理界面,查看您的AccessKey列表,如果当前列表为空,... 3.Access Key Secret默认不显示,点击“显示”链接,阿里云将向您的联... 4.如何禁用阿里云的Access Key 一旦发现您的Acces Key可能被泄露,... 登录您的阿里云管理控制台,点击页面右上角个人信息,展开面板,选择里面的“accesskeys”,或者您也可以直接登录访问https://ak-console....
+            2.进入AccessKeys管理界面,查看您的AccessKey列表,如果当前列表为空,... 3.Access Key Secret默认不显示,点击“显示”链接,阿里云将向您的联... 4.如何禁用阿里云的Access Key 一旦发现您的Acces Key可能被泄露,...登录您的阿里云管理控制台,点击页面右上角个人信息,展开面板,选择里面的“accesskeys”,或者您也可以直接登录访问https://ak-console.... 2.进入AccessKeys管理界面,查看您的AccessKey列表,如果当前列表为空,...
+            3.Access Key Secret默认不显示,点击“显示”链接,阿里云将向您的联... 4.如何禁用阿里云的Access Key 一旦发现您的Acces Key可能被泄露,...登录您的阿里云管理控制台,点击页面右上角个人信息,展开面板,选择里面的“accesskeys”,或者您也可以直接登录访问https://ak-console.... 2.进入AccessKeys管理界面,查看您的AccessKey列表,如果当前列表为空,... 3.Access Key Secret默认不显示,点击“显示”链接,阿里云将向您的联...
+            4.如何禁用阿里云的Access Key 一旦发现您的Acces Key可能被泄露,...</p>
+        <input type="checkbox" name="" id="checkBox" disabled="disabled">我已阅读，保证遵守
+        <br>
+        <input type="submit" value="下一步" id="sub" disabled="disabled">
+
+    </div>
+
+
+
+</body>
+
+</html>

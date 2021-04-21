@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <pre>
+        defineProperty可以定义对象属性
+        defineProperty 接收三个参数
+        1.object （必须有 操作的对象本身）
+        2.propertyname (必须有 属性名 添加修改属性得有属性名)
+        3.descriptor （必须有 官方说的我理解不了，我理解的是 属性描述
+            简单点就是 设置属性的值value，
+            是否可操作属性值 writable，
+            是否可修改配置configurable如果值为false descriptor内的属性都不可操作）
+            是否可枚举enumerable
+    </pre>
+
+    <input type="text" id="my-name" placeholder="defineProperty监听">
+    <p id="my-name-get"></p>
+    <br>--------------------
+    <br>
+    <input type="text" id="myname" placeholder="proxy监听">
+    <p id="mynameget"></p>
+    <script>
+        function testDefineProperty() {
+
+
+            // 定义对象属性值
+            let obj = {
+                a: 1
+            };
+            obj.b = 2; //obj{a:1,b:2}
+            Object.defineProperty(obj, 'c', {
+                value: 4
+            });
+            console.log(obj); //obj{a:1,b:2,c:4}
+
+            // 修改对象属性值
+            Object.defineProperty(obj, 'b', {
+                value: 4
+            });
+            console.log(obj); //obj{a:1,b:4,c:4}
+
+            //设置属性值不可更改
+            Object.defineProperty(obj, 'd', {
+                value: 5,
+                writable: false
+            });
+            obj.d = 7;
+            console.log(obj); //obj{a:1,b:4,c:4,d:5}
+
+            //vue3.0中get set的observe的实现原理
+            let newValue = 45;
+            Object.defineProperty(obj, 'e', {
+                set(newValue) {
+                    console.log('设置');
+                    value = newValue;
+
+                },
+                get(value) {
+                    console.log('获取');
+                    return value;
+                }
+
+            })
+            obj.e = 7;
+            console.log(obj.e); //undefined
+        }
+
+        var inputEle = document.getElementById('my-name');
+        var pEle = document.getElementById('my-name-get');
+        var obj1 = {};
+        // 添加事件监听
+        // 思路：将文本框的值放进obj1中，设置属性为myname,对obj1进行事件监听
+
+        Object.defineProperty(obj1, 'myName', {
+            get: function() {
+                return obj1;
+            },
+            set: function(val) {
+                inputEle.value = val;
+                pEle.innerText = val;
+            }
+        })
+        inputEle.onkeyup = function(e) {
+            obj1.myName = this.value;
+        }
+    </script>
+
+    <script>
+        var inputEle1 = document.getElementById('myname');
+        var pEle1 = document.getElementById('mynameget');
+        var obj2 = {};
+        obj2 = new Proxy(obj2, {
+            set(receiver, property, value) {
+                property = 'myName';
+                inputEle1.value = receiver[property];
+                pEle1.innerText = receiver[property];
+
+                return Reflect.set(receiver, property, value);
+            },
+            get() {
+                return obj1;
+            }
+        })
+        inputEle1.onkeyup = function(e) {
+            obj2.myName = this.value;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+        }
+        
+        #box {
+            height: 1000px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var div1 = document.getElementById("div1");
+            document.onkeydown = function(event) {
+                event = event || window.event;
+                //alert(event.keyCode == 39);
+                if (event.keyCode == 39) div1.style.left = div1.offsetLeft + 10 + "px";
+                else if (event.keyCode == 37) div1.style.left = div1.offsetLeft - 10 + "px";
+
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <div id="div1" style="width: 50px; height: 50px; background-color: red;"></div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>增删改查练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #table {
+            margin: 0 auto;
+            border-spacing: 0;
+            /* 用来合并重复的边 */
+            border-collapse: collapse;
+        }
+        
+        #table th,
+        #table td {
+            border: 1px solid black;
+            /* margin: 0 auto; */
+            width: 113px;
+            text-align: center;
+        }
+        /* 表单 */
+        
+        #form {
+            width: 250px;
+            margin: 20px auto;
+            border: 1px solid black;
+        }
+        
+        #form h2 {
+            margin: 20px 0 20px 10px;
+            font-weight: 400;
+        }
+        
+        #form label {
+            margin: 0 0 50px 10px;
+        }
+        
+        #form #addEmpBtn {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            /*
+             *点击超链接，删除一个员工信息
+             */
+            //获取超链接
+
+
+            function deleteEmp() {
+                //要删除超链接所在的一行，首先找到他的父节点，然后根据父节点，删除子节点
+                var thistr = this.parentNode.parentNode; //点击的tr
+                var flag = confirm("是否确认删除" + thistr.children[0].innerHTML + "？");
+                if (flag) {
+                    thistr.parentNode.removeChild(thistr);
+                }
+            }
+
+            var allA = document.getElementsByTagName("a");
+            for (var i in allA) {
+                allA[i].onclick = deleteEmp;
+            }
+
+            /*
+             *点击按钮，添加员工信息
+             */
+            //获取table信息
+            var table = document.getElementById("table");
+            var tbody = document.getElementsByTagName("tbody")[0]; //虽然自己没写，但是内存中会有,tbody是一个有很多属性的数组
+            var addEmpBtn = document.getElementById("addEmpBtn");
+            addEmpBtn.onclick = function() {
+                //获取name email salary信息
+                var name_value = document.getElementById("name").value;
+                var email_value = document.getElementById("email").value;
+                var salary_value = document.getElementById("salary").value;
+                var addTr = document.createElement("tr");
+                addTr.innerHTML = "<td>" + name_value + "</td>" +
+                    "<td>" + email_value + "</td>" +
+                    "<td>" + salary_value + "</td>" +
+                    "<td><a href='javascript:;'>Delete</a></td>";
+                var a = addTr.getElementsByTagName("a")[0];
+                a.onclick = deleteEmp;
+                tbody.appendChild(addTr);
+
+                // addTr.innerHTML = "<td>" + name_value + "</td>" + "<td>" + email_value + "</td>" + "<td>" + salary_value + "</td>" + "<td></td>";
+                // tbody.appendChild(addTr);
+                // var a = document.createElement("a");
+                // a.href = "javascript:;";
+                // a.onclick = deleteEmp;
+                // a.innerHTML = "Delete";
+                // addTr.children[3].appendChild(a);
+            }
+
+        };
+    </script>
+</head>
+
+<body>
+    <table id="table">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Salary</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Jerry</td>
+            <td>Jerry@qq.com</td>
+            <td>20000</td>
+            <td><a href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>Tom</td>
+            <td>Tom@qq.com</td>
+            <td>20000</td>
+            <td><a href="javascript:;">Delete</a></td>
+        </tr>
+        <tr>
+            <td>jack</td>
+            <td>jack@qq.com</td>
+            <td>20000</td>
+            <td><a href="javascript:;">Delete</a></td>
+        </tr>
+    </table>
+    <form id="form">
+        <h2>添加新员工</h2>
+        <label for="name"> name:<input type="text" name="NewName" id="name"></label><br>
+        <label for="email">email:<input type="text" name="NewEmail" id="email"></label><br>
+        <label for="salary">salary:<input type="text" name="NewSalary" id="salary"></label><br>
+        <input id="addEmpBtn" type="submit" value="submit">
+    </form>
+</body>
+
+</html>

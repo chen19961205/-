@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/template-web.js"></script>
+    <!-- 只需要打开服务器就可以,设置静态页面位置就可以--->
+</head>
+
+<body>
+    <div id="container"></div>
+    <script id="sp1" type="text/html">
+        <h1>Hello,{{username}}</h1>
+    </script>
+
+    <script type="text/javascript">
+        // 创建模板
+        var html = template('sp1', {
+            username: '张三'
+        });
+        document.getElementById('container').innerHTML = html;
+    </script>
+
+</body>
+
+</html>

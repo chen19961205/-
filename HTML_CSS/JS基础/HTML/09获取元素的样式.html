@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取元素样式</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        function getStyle(obj, name) {
+            if (window.getComputedStyle) {
+                return getComputedStyle(obj, null)[name];
+            } else {
+                return obj.currentStyle[name];
+            }
+        }
+        window.onload = function() {
+            var btn = document.getElementById("btn");
+            var box1 = document.getElementById("box1");
+
+            var box1_bgColor = box1.style.backgroundColor; //因为元素.style.属性名  只适合在内敛样式中使用
+            // var box1_bgColor1 = box1.currentStyle.backgroundColor; //只适合在ie中使用
+            //在window下的方法,两个参数(获取样式的对象，传递一个伪元素（null）),但是在chrome中报错
+            var box1_bgColor2 = getComputedStyle(box1, null);
+            console.log(box1_bgColor2);
+            btn.onclick = function() {
+                //获取元素属性值
+                var box_shuxing = getStyle(box1, "backgroundColor");
+                alert(box_shuxing);
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1">
+
+    </div>
+    <input type="button" value="点击" id="btn">
+</body>
+
+</html>

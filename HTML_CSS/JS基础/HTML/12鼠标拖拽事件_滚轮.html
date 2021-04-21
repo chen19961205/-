@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标拖拽事件和滚轮事件</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+        }
+        
+        #box {
+            height: 1000px;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var div1 = document.getElementById("div1");
+            div1.onmousedown = function(event) {
+                    event = event || window.event;
+                    var offx = event.clientX - div1.offsetLeft; //鼠标可见坐标-div偏移坐标=鼠标在div上偏移的坐标
+                    var offY = event.clientY - div1.offsetTop;
+                    console.log(offY + "," + offx);
+                    document.onmousemove = function(event) {
+                        event = event || window.event;
+                        div1.style.left = event.clientX - offx + "px";
+                        div1.style.top = event.clientY - offY + "px";
+                    }
+                    document.onmouseup = function() {
+                        document.onmousemove = null;
+                        return false;
+                    }
+                }
+                //滚轮事件
+            div1.onmousewheel = function(event) {
+                event = event || window.event;
+                var scroll = event.wheelDelta || event.detail; //正表示向上滑动，负数表示向下滑动,detail适合火狐
+
+                if (scroll > 0) {
+                    if (div1.clientHeight < 10) return;
+                    div1.style.height = div1.clientHeight - 10 + "px";
+                } else {
+                    div1.style.height = div1.clientHeight + 10 + 'px';
+                }
+                return false;
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        <div id="div1" style="width: 50px; height: 50px; background-color: red;"></div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拷贝</title>
+    <script src="../js/jquery.min.js"></script>
+</head>
+
+<body>
+    <pre>浅拷贝，深拷贝
+        $.extend([deep],target,obj);  把obj内容拷贝到target中，重复元素会覆盖
+        deep中的true是深拷贝，fasls是浅拷贝
+        targetN待拷贝到第N个对象的对象
+        浅拷贝是把拷贝的对象   复杂数据类型{}    中的地址拷贝到目标对象，修改目标对象数值会影响被拷贝对象中的值（因为把地址的值修改了）
+        浅拷贝是把obj的值覆盖到target中,    ,浅拷贝就是简单复制，有地址的话把地址复制过去，所以目标对地址的内容修改了会影响之前的值
+
+
+        深拷贝： 把obj数据完整的拷贝到target中，相同对象里面的数据会合并到一起，并且会开辟一段新的地址空间
+        深拷贝是把obj和target做了一个整合，之前有的并且不重复的接着用，重复的那就替换，并把新整合的重新存入一个空间，修改后的值对之前对象不影响
+
+
+
+        多库共存
+        1.有很多库也会以$调用其方法，为了解决$冲突问题，使用jQuery来代替$
+        jQuery("div");
+        2.让jquery释放对$的控制权,让用户自己决定名字
+        var suibian=jQuery.noConflict();
+        console.log(suibian("div"));
+
+    </pre>
+    <script>
+        $(function() {
+            var targetObj = {
+                id: 0,
+                msg: {
+                    name: "张三"
+                }
+            };
+            var obj = {
+                id: 1,
+                name: "andy",
+                msg: {
+                    age: 18,
+                    sex: "女"
+                }
+            };
+            $.extend(targetObj, obj);
+            console.log(targetObj);
+
+        })
+    </script>
+</body>
+
+</html>

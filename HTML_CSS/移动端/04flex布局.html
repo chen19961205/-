@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 常见父项属性 */
+        
+        div {
+            width: 800px;
+            height: 300px;
+            background-color: pink;
+            display: flex;
+            /* 主轴，水平朝右；侧轴垂直朝下
+            排列方向，元素跟着主轴排列 */
+            /* Syntax: row | row-reverse | column | column-reverse */
+            /* flex-direction: row; */
+            /* 定义项目在主轴上的对齐方式 */
+            /* justify-content: flex-start; */
+            /* 从左往右对齐，靠左浮动 */
+            /* justify-content: flex-end; */
+            /* 从右往左对齐，靠右浮动 */
+            /* justify-content: center; */
+            /* 中间对齐 */
+            /* justify-content: space-between; */
+            /* 左浮动，中间，右浮动；先两边贴边，再平分剩余 */
+            /* justify-content: space-evenly; */
+            /* space-evenly，flex 元素之间和 flex 元素和容器的空间总是相等的 */
+            /* justify-content: space-around; */
+            /* space-around，只有flex 元素之间的空间是相等的，第一个 flex 元素和最后一个 flex 元素和容器的空间是 flex 元素间空间的一 半 */
+            /* flex-wrap: nowrap; */
+            /* 控制伸缩容器是单行还是多行，以及交叉轴的方向(交叉轴决定新行堆放的方向)。 */
+            /* 主轴侧轴全部都是水平居中 */
+            /* justify-content: center; */
+            align-items: center;
+            align-items: flex-start;
+            /* 沿着侧轴y轴，所以在最上边 */
+            align-items: stretch;
+            /* 沿着侧轴拉伸，子元素不要设置高度 */
+        }
+        
+        div span {
+            width: 150px;
+            /* height: 100px; */
+            background-color: red;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 对pc端浏览器支持性比较差 
+    PC端页面布局，使用传统布局-->
+    <!-- 如果是移动端或者不考虑兼容性问题的PC端页面布局，我们还是使用flex弹性布局
+    任何容器都可以使用flex布局 -->
+    <!-- 当父元素设置为flex布局后，子元素的float，clear,vertical-align属性就会失效
+        通过给父盒子添加flex属性，用来控制子盒子的位置和排列方式
+    伸缩布局=弹性布局=伸缩盒布局=弹性盒布局=flex布局 -->
+
+
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+
+</body>
+
+</html>

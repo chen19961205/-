@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var btn = document.getElementById("btn");
+            /*btn.onclick = function() {
+                //点击会自动刷新页面自动跳转到该路径，并且会生成相应的历史记录
+                location = "15.Bom.html"; //location.assign("15.Bom.html")
+                location.reload(true); //true会强制清空缓存刷新页面，如果没有参数就是刷新当前页面
+                location.replace(""); //用新页面替换当前页面，调用完毕后也会跳转页面，不会生成历史记录，不能使用回退按钮
+            }*/
+
+            var pText = document.getElementById("pText");
+
+            /*定时器
+            var i = 0;
+            function count() {
+                if (i < 100) i++;
+                else i = 0;
+                pText.innerHTML = i;
+            }
+            window.setInterval(count, 50)
+            */
+
+            //延时调用
+            btn.onclick = function() {
+                setTimeout("alert('5 seconds!')", 5000)
+            };
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <p id="pText">0</p>
+    <button id="btn">点击</button>
+</body>
+
+</html>

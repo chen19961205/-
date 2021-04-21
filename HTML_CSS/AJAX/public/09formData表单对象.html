@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="form">
+        <input type="text" name="username" id="">
+        <input type="password" name="pwd" id="">
+        <input type="button" value="提交" id="btn">
+    </form>
+</body>
+<script>
+    var btn = document.getElementById('btn');
+    var form = document.getElementById('form');
+    btn.onclick = function() {
+        // 自动将表单元素拼接成表单对象
+        var formData = new FormData(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "http://localhost/adv");
+        xhr.send(formdata);
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                console.log(xhr.responseText);
+            }
+        }
+    }
+</script>
+
+</html>

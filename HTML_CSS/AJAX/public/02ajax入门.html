@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //创建ajax对象
+        var xhr = new XMLHttpRequest();
+        //获取请求地址和请求方式
+        xhr.open('get', 'http://localhost:3000/first');
+        //发送请求
+        xhr.send();
+
+        //获取响应,当ajax获取服务器端的响应之后就会触发onload事件，
+        // 响应内容保存到responseText里面
+        xhr.onload = function() {
+            console.log('dao ajax');
+            console.log(xhr.responseText);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

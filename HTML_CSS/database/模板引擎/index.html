@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<p>name:{{name}}</p>
+<p>age:{{age}}</p>
+<p>内容:{{@content}}</p>
+<p>{{if age>15}}年龄>15{{else if age>20}}年龄大于20{{else}}年龄不符合{{/if}}</p>
+原始语法
+<p>
+    <% if(age>18){ %>
+        18以上
+        <% }else if(age<18){ %>
+            18以下
+            <% } %>
+</p>
+
+
+<h1>针对于子模版</h1>
+
+{{include './common/header.art'}}
+<br> 我是{{name}}
+<br> {{include './common/footer.art'}}
+
+<% include('./common/header.art')%>
+
+    <% include('./common/footer.art')%>
+
+
+
+        <body>
+
+        </body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //JSON在ie7及以下不能用
+        // json是特殊格式字符串，json中允许的值：字符串，数值，布尔值，null，对象 数组
+        //在json中为我们提供了一个工具类，就叫json  json对象《--》js对象
+        /* var json = '[{"name":"孙悟空","age":18,"gender":"女"},{"name":"猪八戒","age":18,"gender":"女"}]';
+
+
+
+        //将JSON对象--》js对象     属性名(例如name)必须加双引号,name:value
+        var o = JSON.parse(json);
+        console.log(o);
+
+
+
+
+        //将js对象--》JSON对象
+        var obj = {
+            name: "张三",
+            age: 15,
+            gender: "女"
+        };
+        var objJson = JSON.stringify(obj);
+        console.log(objJson);
+*/
+
+
+
+        //eval（）可以执行一段字符串形式的js代码，并将执行结果返回
+        //eval如果含有{}，会把{}当做代码块
+        //ie7可以他字符串转js对象，但是他的执行性能差，具有安全隐患()
+        var str = "alert('hello');";
+        var json = '{"name":"孙悟空","age":18,"gender":"女"}';
+        eval(str);
+        var o = eval("(" + json + ")");
+        console.log(o);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

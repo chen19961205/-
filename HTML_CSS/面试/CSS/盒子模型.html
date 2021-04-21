@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .d1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 1px solid black;
+            padding: 3px;
+            margin: 10px;
+        }
+        
+        .d2 {
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 1px solid black;
+            padding: 3px;
+        }
+        
+        .d3 {
+            box-sizing: padding-box;
+            width: 20px;
+            height: 20px;
+            background-color: pink;
+            border: 5px solid blue;
+            padding: 3px;
+        }
+        
+        .d4 {
+            margin-top: 20px;
+            width: 50px;
+            height: 5px;
+            border-top: 1px solid blue;
+        }
+        
+        #line {
+            border-bottom: 1px solid black;
+        }
+        
+        #line1 {
+            border-bottom: 1px solid black;
+            transform: scaleY(0.5);
+            /* 增加实体，只有上一句会变虚 */
+            /* transform-origin: 50% 100%; */
+        }
+        
+        #line2 {
+            /* 会出现虚化效果 */
+            height: 1px;
+            background: -webkit-linear-gradient(90deg, #000 50%, transparent 50%);
+        }
+        
+        #line3 {
+            height: 1px;
+            background: none;
+            /* 右，下，虚化程度（0不虚化），颜色 */
+            box-shadow: 0 0.5px 0 #000;
+        }
+        
+        #line4 {
+            /* width: 300px; */
+            background-color: #000;
+            height: 0.5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 盒子模型 -->
+    <div class="d1"></div>
+    <div class="d2">
+        <div class="d3"></div>
+    </div>
+
+    <!--画线0.5px  -->
+    <div class="d4"></div>
+
+    <h1>1px粗线</h1>
+    <div id="line"></div>
+    <h4>方法一：transform</h4>
+    <div id="line1"></div>
+    <h4>方法二：渐变在移动端</h4>
+    <div id="line2"></div>
+    <h4>方法三：box-shadow</h4>
+    <div id="line3"></div>
+    <h4>方法四：直接设置0.5px</h4>
+    <div id="line4"></div>
+
+
+</body>
+
+</html>

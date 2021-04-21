@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var btn = document.getElementById("btn");
+            btn.onclick = function() {
+                history.back();
+            }
+            history.go(1); //向前跳转几个页面，可以使负数向后跳转
+        }
+    </script>
+</head>
+
+<body>
+    <a href="../HTML/14Bom.html">前一页</a>
+    <button id="btn">点击</button>
+</body>
+
+</html>

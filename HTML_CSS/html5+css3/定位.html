@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .border {
+            width: 200px;
+            height: 200px;
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            position: relative;
+        }
+        
+        .child1 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: relative;
+            top: 50px;
+            left: 50px;
+            /* 根据原来自身的位置进行定位，原来是top0 left0 
+            移动位置以原来位置为参照点
+            偏移后不会影响兄弟盒子位置，不脱标，文档继续保留他原来的位置*/
+        }
+        
+        .child2 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+            right: 10px;
+        }
+        
+        .child3 {
+            position: sticky;
+            /* 只要盒子距离浏览器上部为0px就变为粘性定位，但是往下走到自己应该有的位置上，就会发生变化，兼容性很差 */
+            top: 0;
+            width: 800px;
+            height: 50px;
+            background-color: pink;
+            margin: 200px auto;
+        }
+        
+        .child4 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: fixed;
+            top: 100px;
+            right: 20px;
+        }
+        
+        .child5 {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: static;
+            top: 500px;
+        }
+        
+        .setp {
+            background-color: plum;
+        }
+        
+        .setFloat {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: peru;
+        }
+        
+        .setabsolute {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(205, 63, 146);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 定位=定位模式+边偏移 -->
+    <!--  -->
+    <p>相对定位</p>
+    <pre>相对定位普遍是为了约束绝对定位的，移动位置以原来位置为参照点
+        偏移后不会影响兄弟盒子位置，不脱离标准流，文档继续保留他原来的位置
+    占据空间</pre>
+    <div class="border">
+        <div class="child1">相对定位</div>
+        <div style="width: 100px;height: 100px; background-color: purple;">对照兄弟盒子</div>
+    </div>
+    <p>绝对定位</p>
+    <pre>1.如果没有祖先元素或者祖先元素没有定位，则以浏览器为准定位
+         2.如果祖先元素有定位(相对，绝对，固定),则与最近一级的有定位祖先元素为参考点移动位置
+         3.会脱标准流，下面的兄弟盒子B会占据原来A盒子的位置，不占空间
+    </pre>
+    <div class="border">
+        <div class="child2">绝对定位</div>
+        <div style="width: 100px;height: 100px; background-color: purple;">对照兄弟盒子</div>
+    </div>
+    <p>粘性定位sticky</p>
+    <pre>
+        1.以浏览器的可视窗口为参照点移动元素
+        2.占有原来位置
+        3.必须添加top left right bottom中的一个才起作用
+    </pre>
+    <div class="child3">粘性定位</div>
+
+    <p>固定定位fixed</p>
+    <pre>1.在可视区域内变化，以浏览器可视窗口为参照点
+        2.无论祖先元素有没有定位，都会以浏览器为准，不随着滚动条滚动而滚动，适合浏览器中的广告设置
+        3.脱离标准流，不占用位置，会覆盖其他元素
+        4.固定在版心右侧位置（重要），返回到首页
+            4.1让固定盒子left50%，然后设置margin
+        
+    </pre>
+    <div class="border">
+        <div class="child4">固定定位</div>
+        <div style="width: 50px;height: 50px; background-color: purple; margin: 0 auto;">
+            版心
+        </div>
+        <div style="width: 10px;height: 10px; background-color: red; position: fixed; top: 100px; left: 20%; margin-left: -140px; "></div>
+    </div>
+    <p>静态定位static</p>
+
+    <div class="border">
+        <pre>
+            静态定位的元素不会受到top, bottom, left, right影响。
+        </pre>
+        <div class="child5">静态定位</div>
+    </div>
+
+
+    <!-- 定位浮动差别 -->
+    <h1>定位浮动差别</h1>
+    <!-- <div class="setFloat">设置浮动位置</div>
+    <p class="setp">p标签里面的文字，浮动只会覆盖盒子，但是不能覆盖盒子里面的文字</p> -->
+
+    <br><br><br>
+    <!-- 相对于父类 -->
+    <div class="setabsolute">设置absolute的位置</div>
+    <p class="setp">p标签里面的文字，absolute只会覆盖盒子并且包括里面内容</p>
+
+
+
+</body>
+
+</html>

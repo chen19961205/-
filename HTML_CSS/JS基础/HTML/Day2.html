@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2--box</title>
+    <link rel="stylesheet" type="text/css" href="Day2.css">
+    <style>
+        .TestBox {
+            width: 200px;
+            height: 200px;
+            border: 2px solid blue;
+            border-top: 2px dotted red;
+        }
+        
+        .testTable {
+            /* 放在table属性里，用来合并单元框的相临边 */
+            border-collapse: collapse;
+            /* 当上面属性为seperate时，设置框之间的距离 */
+            border-spacing: 0px;
+        }
+        
+        .testTable td,
+        .testTable th {
+            border: 1px solid blue;
+            text-align: center;
+        }
+        
+        .testPadding {
+            border-top: #ff8500 3px solid;
+            border-bottom: #edeef0 1px solid;
+            height: 41px;
+            background-color: #fcfcfc;
+            color: #4c4c4c;
+        }
+        
+        .testPadding ul {
+            margin: 0px;
+        }
+        
+        .testPadding ul li {
+            list-style: none;
+            /* float: left; */
+            padding: 0 20px;
+            height: 41px;
+            display: inline-block;
+            line-height: 41px;
+        }
+        
+        .testPadding ul li a {
+            text-decoration: none;
+        }
+        
+        .testPadding ul li:hover {
+            background-color: orange;
+        }
+        /* 应对内嵌子盒子的父盒子塌陷问题 */
+        
+        .fatherBox {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 需要设置子盒子margin-left:-1; */
+            border: 1px solid transparent;
+            /* 需要考虑到padding会撑大父盒子 */
+            /* padding-top: 20px; */
+            /* 效果最好 */
+            /* overflow: hidden; */
+        }
+        
+        .sonBox {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 盒子测试 -->
+    <div class="TestBox">
+    </div>
+    <br>----------表格--------------------------------<br>
+    <table class="testTable">
+        <tr>
+            <th>排名</th>
+            <th>关键词</th>
+            <th>趋势</th>
+            <th>相关链接</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>11</td>
+            <td>111</td>
+            <td><a href="#">1111</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>22</td>
+            <td>222</td>
+            <td><a href="#">2222</a></td>
+        </tr>
+    </table>
+    <br>-------------新浪导航案例、padding------------------------------------<br>
+    <div class="testPadding">
+        <ul>
+            <li><a href="#">设为首页</a></li>
+            <li><a href="#">手机新浪网</a></li>
+            <li><a href="#">移动客户端</a></li>
+            <li><a href="#">博客</a></li>
+            <li><a href="#">微博</a></li>
+        </ul>
+    </div>
+    <br>---------------对应盒子模型，父盒子塌陷问题------------------------------------<br>
+    <div class="fatherBox">
+        <div class="sonBox">子盒子</div>
+    </div>
+    <!-- 圆角边框 -->
+    <style>
+        .testRadius {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* border-radius: 100px 20px; */
+            border-top-left-radius: 20px;
+        }
+    </style>
+    <div class="testRadius">
+    </div>
+    <!-- 盒子阴影,文字阴影 -->
+    <style>
+        .boxshadow {
+            width: 200px;
+            height: 200px;
+            background-color: sienna;
+            margin: 0 auto;
+        }
+        
+        .boxshadow:hover {
+            box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, .3);
+        }
+        
+        .textShadow {
+            color: red;
+            font-weight: 400;
+        }
+        
+        .textShadow:hover {
+            text-shadow: 10px 10px 5px rgba(0, 0, 0, .8);
+        }
+    </style>
+    <div class="boxshadow">
+    </div>
+    <h3 class="textShadow">文字阴影</h3>
+    <!-- 浮动 -->
+    <style>
+        .TopBox {
+            height: 100px;
+            background-color: black;
+        }
+        
+        .parentBox {
+            width: 1000px;
+            border: 2px solid blue;
+            background-color: red;
+            /* IE6,IE7专用 */
+            *zoom: 1;
+        }
+        /* 这是在块级元素之后添加了一个table元素*/
+        
+        .parentBox::before,
+        .parentBox:after {
+            content: "";
+            display: table;
+        }
+        
+        .parentBox:after {
+            clear: both;
+        }
+        
+        .parentBox .mao {
+            width: 200px;
+            height: 200px;
+            float: left;
+            background-color: pink;
+            margin-right: 10px;
+        }
+        
+        .bottom {
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+    <div class="TopBox"></div>
+    <div class="parentBox">
+        <div class="mao">1</div>
+        <div class="mao">2</div>
+        <div class="mao">3</div>
+    </div>
+    <div class="bottom"></div>
+
+</body>
+
+</html>

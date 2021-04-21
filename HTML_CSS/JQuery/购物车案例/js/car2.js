@@ -1,0 +1,21 @@
+$(function() {
+
+    $(".checkall").change(function() {
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+});

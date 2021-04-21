@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+
+        <dt>
+            var
+          </dt>
+        <dd>
+            var作用域为该语句所在的函数内，且存在变量提升
+
+        </dd>
+        <dt>
+          Let
+        </dt>
+        <dd>
+            作用域在该语句所在的<strong>代码块内</strong>，不存在变量提升
+            <br> let声明的变量只在所处于的块级有效，使用let关键字声明的变量才具有块级作用域，let变量每次循环都会创建一个块级作用域 使用var声明的变量具有全局作用域
+            <br>好处：防止循环变量变成全局变量，例如for循环，因为for循环中的i是var，具有全局作用域
+            <br>let是在es6中新增的用于声明变量的关键字，它不存在变量提升，及一定要先声明再调用。
+            <br>具有暂时性死区，即在块作用域或者一个方法中，只在一个块内的作用域内有效
+        </dd>
+
+        <dt>
+            const
+          </dt>
+        <dd>
+
+            const是声明常量，是值（内存地址）不能变化的值。具有<strong>块级作用域</strong>，声明时必须赋初始值
+            <br>常量赋值后不能更改，值不能更改。但是对于数组元素可以单独改数组内部元素值。因为一个是改变值地址，数组中单独改变内部其中一个不会影响值地址
+
+        </dd>
+
+        <dt>
+            数组解构
+          </dt>
+        <dd>
+
+            允许按照一一对应的关系从数组中提取值并赋值给变量
+            <br> let ary = [1, 2, 3];
+            <br>let [a, b, c, d] = ary; //d是undefined
+            <br>let person = { name: "zhangsan", age: 12, sex: "nan" };
+            <br>let { name, age, sex } = person; //一一赋值
+            <br>------- //还可以起别名
+            <br> let { name: Myname, age: Myage, sex: Mysex } = person; console.log(Myname);
+
+        </dd>
+
+        <dt>
+            箭头函数
+          </dt>
+        <dd>
+
+            ()=>{} const fn=()=>{}
+            <br> ()放置形参
+            <br>代码执行结果是返回值
+            <br>const sum = (a, b) => a + b;
+            <br> console.log(sum(10, 20));
+            <br>箭头函数不绑定this关键字，箭头函数中的this，指向的是函数定义位置的上下文this,可以用call改变this指向
+            <br> let { name: Myname, age: Myage, sex: Mysex } = person; console.log(Myname);
+        </dd>
+
+        <dt>
+            剩余函数
+          </dt>
+        <dd>
+            不定数量的参数表示为一个数组 ...args
+            <br> function sum1(a, ...args) { console.log(a); console.log(args); } sum1(1, 2, 3, 4);
+
+            <br>代码执行结果是1
+            <br>[2, 3, 4]
+            <br>
+        </dd>
+
+        <dt>
+            扩展运算符  &nbsp;&nbsp;
+          </dt>
+        <dd>
+            应用：
+            <ul>
+                <li>1.合并数组(两种方法一是...二是ary.push)</li>
+                <li>2.扩展运算符，例如把html数组改成伪数组 &nbsp;172行</li>
+                <li>3.构造函数方法&nbsp;&nbsp;将类数组或者可遍历对象转换为真正的数组</li>
+            </ul>
+
+        </dd>
+    </header>
+</body>
+<script>
+    $(function() {
+        /* var arr = [];
+         for (var i = 0; i < 2; i++) {
+             arr[i] = i;
+         }
+         console.log(arr[0]);
+         console.log(arr[1]);
+         // arr[1]();
+         */
+        let ary = [1, 2, 3];
+        let [a, b, c, d] = ary; //d是undefined
+        let person = {
+            name: "zhangsan",
+            age: 12,
+            sex: "nan"
+        };
+        let {
+            name,
+            age,
+            sex
+        } = person; //一一赋值
+        //console.log(name);
+
+        //还可以起别名
+        let {
+            name: Myname,
+            age: Myage,
+            sex: Mysex
+
+        } = person;
+        //console.log(Myname);
+
+
+        //箭头函数
+        const sum = (a, b) => a + b;
+        //console.log(sum(10, 20));
+
+        //箭头函数2
+        function fun() {
+            console.log(this);
+            return () => {
+                console.log(this);
+            }
+        }
+        //fun()(); //箭头函数指向是window
+        const obj = {
+            name: 'zhangsan'
+        };
+
+        //fun.call(obj); //this指向obj
+        const resfn = fun.call(obj);
+        resfn();
+
+        //剩余数组
+        function sum1(a, ...args) {
+            console.log(a);
+            console.log(args);
+        }
+        sum1(1, 2, 3, 4);
+
+
+        //扩展运算符
+        //合并数组1
+        let ary1 = [1, 2, 3];
+        let ary2 = [4, 5, 6];
+        let ary3 = [...ary1, ...ary2];
+        console.log(ary3);
+        //合并数组2
+        ary1.push(...ary2);
+        console.log(ary1);
+
+
+        //伪数组变成真正的数组
+        var oDivs = document.getElementsByTagName('div');
+        console.log(oDivs);
+        var ary4 = [...oDivs];
+        console.log(ary4);
+
+        //array.from()
+
+        let arrayList = {
+            "0": "张三",
+            "1": "李四",
+            "2": "王五",
+            "length": 3
+        }; //0 1 2 不能改变，因为其是数组上标
+
+        let arrayList1 = {
+            "0": 1,
+            "1": 2,
+            "2": 3,
+            "length": 3
+        };
+        var ary5 = Array.from(arrayList);
+        console.log(ary5);
+        var ary6 = Array.from(arrayList1, item => item * 2);
+        console.log(ary6);
+        var ary7 = [{
+            id: 1,
+            name: "zhangsan"
+        }, {
+            id: 2,
+            name: "lisi"
+        }];
+        let target = ary7.find(item => item.id == 2);
+        console.log(target);
+
+        //数组下面的includes()
+        //findIndex()是返回给定的满足某个条件的第一个值
+        //表示某个数组是否包含给定的值，返回布尔值  es6之前用indexOf查找给定的值
+        var fOrT = [1, 2, 3].includes(2);
+        console.log(fOrT);
+
+
+        //模板字符串 `
+        let mobileString = `这是一个模板字符串`;
+        console.log(mobileString);
+        //1. 模板字符串可以解析变量
+        let sayHello = `hello,my name is ${mobileString}`;
+        console.log(sayHello);
+        //2. 模板字符串可以换行
+        let result = {
+            name: 'zhangsan',
+            age: 20,
+            sex: '男'
+        }
+        let html = `<div>
+            <span>${result.name}</span>
+            <span>${result.age}</span>
+            <span>${result.sex}</span>        
+        /div>`;
+        console.log(html);
+
+        //starsWith()和endWith()  表示参数字符串是否在原字符串的头部/尾部，返回布尔值
+        let str = 'hello world 2021';
+        let r1 = str.startsWith('hello');
+
+        let r2 = str.endsWith('2022');
+        console.log(r1 + "," + r2);
+
+        //repeat表示将原字符重复几次，返回拼接后的结果
+        console.log("y".repeat(5));
+        //set提供了新的数据结构，类似于数组，但是不会有重复的值
+        //浏览器搜索历史关键字用set ,set是一个数据结构
+        const s = new Set();
+        const set = new Set([1, 2, 3, 4, 4]);
+        console.log(set.size); //3
+        const newSet = [...set]; //把他变为数组
+        console.log(newSet);
+
+        //set常用方法 add()  delete()   has(value) clear()
+        //遍历
+        set.forEach((value) => {
+            console.log(value);
+        })
+
+
+
+    });
+</script>
+
+</html>

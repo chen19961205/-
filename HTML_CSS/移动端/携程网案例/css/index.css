@@ -1,0 +1,57 @@
+body {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none;
+    max-width: 540px;
+    min-width: 320px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background: #fafafc;
+    color: #000;
+    font: 400 16px/1.5 PingFangSC-regular, Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+.search-index {
+    /* 固定定位必须要有宽度 */
+    position: fixed;
+    top: 0;
+    /* 通过下两句设置居中对齐，缩放不影响 或者这两句不要用*/
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 44px;
+    background-color: pink;
+    min-width: 320px;
+    max-width: 540px;
+    display: flex;
+}
+
+.search-index .search {
+    height: 44px;
+    flex: 1;
+}
+
+.search-index .user::before {
+    content: "";
+    display: block;
+    width: 23px;
+    height: 23px;
+    background: url(../images/sprite.png) no-repeat -59px -194px;
+    /* 把原来的背景图缩放,必须放在背景图下面 */
+    background-size: 104px auto;
+    margin: 5px auto 0;
+}
+
+.search-index .user {
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+    text-align: center;
+    background-color: red;
+}

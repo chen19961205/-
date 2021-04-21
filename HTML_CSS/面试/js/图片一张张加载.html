@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片加载</title>
+</head>
+
+<body>
+    <script>
+        var obj = new Image();
+        obj.src = "";
+        obj.onload = function() {
+            console('输出图片');
+            document.getElementById('mypic').innerHTML = "<img src='" + this.src + "'/>";
+        }
+    </script>
+    <div id="mypic">onloading……</div>
+
+    <div id="mypic1">第二种onloading……</div>
+    <script>
+        var obj1 = new Image();
+        obj1.src = '';
+        obj1.onreadystatechange = function() {
+            if (this.readyState == 'complete') {
+                console('输出图片');
+                document.getElementById('mypic1').innerHTML = "<img src='" + this.src + "'/>";
+            }
+        }
+    </script>
+</body>
+
+</html>

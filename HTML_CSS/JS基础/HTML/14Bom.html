@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bom</title>
+    <script>
+        window.onload = function() {
+            /*
+             *Bom浏览器对象模型
+             *DOM是操作网页的。BOM是操作浏览器
+             *BOM对象   Window代表的整个浏览器的窗口，同时window也是网页的全局对象
+             *Navigator    当前浏览器的信息，通过该信息识别不同的浏览器 userAgent来判断浏览器信息
+             *Location     代表当前浏览器的地址栏信息，可以操作浏览器跳转页面
+             *History  历史记录，由于隐私，只能操作浏览器向前向后翻页，并且该访问只能在当次访问中有效
+             *Screen   代表用户的屏幕信息，通过该对象可以获取到用户的显示器的相关信息
+             *现在ie逼近其他浏览器，ie11中没有其他关键词，可以通过ie中独有对象来判断是否是ie浏览器  例如ActiveXObject
+             */
+            var ua = navigator.userAgent;
+            if (/Chrome/.test(navigator.userAgent)) {
+                alert("我是chrome");
+            } else if ((!!window.ActiveXObject) || ("ActiveXObject" in window))
+                console.log(navigator.userAgent);
+            console.log(/Chrome/.test(navigator.userAgent));
+
+            var btn = document.getElementById("btn");
+            btn.onclick = function() {
+                history.forward();
+            }
+
+
+            console.log(history.length);
+            console.log(screen);
+            console.log(location);
+        }
+    </script>
+</head>
+
+<body>
+
+    <a href="../HTML/14History.html">后一页</a>
+    <button id="btn">点击</button>
+</body>
+
+</html>

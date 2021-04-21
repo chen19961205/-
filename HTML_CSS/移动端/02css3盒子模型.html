@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 传统盒子模型 盒子大小为本身+padding+border 224*224 */
+        
+        div:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 2px solid red;
+            padding: 10px;
+        }
+        /* css盒子样式200*200
+         box-sizing: content-box;  加上padding+border  不包括内边距和边框（都是另外计算）
+         box-sizing: border-box;算上padding和border才是200px*/
+        
+        div:nth-child(2) {
+            /* box-sizing: inherit; */
+            /* margin-top: 10px; */
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 2px solid red;
+            border-top: 1px solid transparent;
+            padding: 10px;
+        }
+        
+        a {
+            /* 加上这个属性才能给按钮和输入框自定义样式 */
+            appearance: none;
+            /* 点击时会显示高亮，我们需要清除，设置显示透明 */
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        img,
+        a {
+            /* 当我们在键盘上安的时间很长会弹出菜单,禁用长按界面时弹出菜单 */
+            -webkit-touch-callout: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 在移动端大部分只需要兼容webkit内核
+    -moz代表firefox浏览器私有属性，-ms代表ie浏览器私有属性，-webkit代表safari、chrome私有属性 -->
+    <div></div>
+    <div></div>
+    <a href="">移动端的超链接设置</a>
+</body>
+
+</html>

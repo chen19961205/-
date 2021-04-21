@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多事件绑定</title>
+    <script>
+        window.onload = function() {
+            var btn1 = document.getElementById("btn1");
+
+            /*
+             *addEventListener()添加事件监听器
+             *有三个参数：
+             *1.事件字符串，onclick 不要on--> click
+             *2.回调函数，当事件触发时该函数会调用
+             *3.是否在捕获期间触发函数，需要一个bool值，一般都传false
+             *一般浏览器都支持这种方法，this值是调用者obj，btn1
+            btn1.addEventListener("click", function() {
+                alert("hhh");
+            });
+            btn1.addEventListener("click", function() {
+                alert(2);
+            }, false);
+             */
+
+
+
+            /*
+             *在ie8中支持attachEvent
+             *有两个参数，第一个是绑定时间，另一个是回调函数，但是调用他的this值是window
+            btn1.attachEvent("onclick", function() {
+                alert(3);
+            });
+            */
+
+
+            /*
+              //判断是否在ie8中，浏览器兼容性
+            if (btn1.addEventListener) {
+                btn1.addEventListener("click", function() {
+                    alert(2);
+                }, false);
+            } else {
+                btn1.attachEvent("onclick", function() {
+                    alert(3);
+                });
+            }
+            */
+            bind(btn1, "click", function() {
+                alert(1);
+            })
+
+            function bind(obj, eventStr, callback) {
+                if (obj.addEventListener) {
+                    obj.addEventListener(eventStr, callback, false);
+                } else {
+                    //obj.attachEvent("on" + eventStr, callback);
+                    obj.attachEvent("on" + eventStr, function() {
+                        callback.call(obj); //call来改变this指向
+                    });
+                }
+            }
+
+
+        };
+    </script>
+</head>
+
+<body>
+    <button id="btn1">点击1</button>
+
+
+    <pre>事件的传播，w3C将事件传播分为三个阶段。
+        1.捕获阶段。
+            -在捕获阶段从最外层的祖先元素，向目标元素进行事件的捕获，但是默认此时不会触发事件
+
+        2.目标阶段
+            -事件从目标元素向其他的祖先元素传递，依次触发祖先元素上的事件
+        3.冒泡阶段
+            -事件从目标元素向他的祖先元素传递，依次触发祖先元素上的事件。
+        - 如果下午在捕获阶段触发事件，可以将addEventListener（）第三个参数改为true
+        一般情况下不会希望在捕获阶段触发事件，因为会将父元素祖先元素挨个响应过来
+    </pre>
+</body>
+
+</html>

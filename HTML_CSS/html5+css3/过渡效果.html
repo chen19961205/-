@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试过渡效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .bar {
+            /* 运动曲线:linear匀速，ease逐渐慢下来，ease-in加速，ease-out逐渐减速，ease-in-out逐渐加速再减速 */
+            /* transition: 要过渡的属性（宽度/高度/背景颜色） 花费时间 运动曲线（默认ease) 何时开始; */
+            width: 200px;
+            height: 36px;
+            border: 1px solid red;
+            border-radius: 15px;
+            transition: width 1s ease 0.5s;
+        }
+        
+        .bar_in {
+            width: 50%;
+            height: 100%;
+            background-color: red;
+            transition: width 1s ease 0.5s;
+        }
+        
+        .bar:hover .bar_in {
+            width: 100%;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bar">
+        <div class="bar_in"></div>
+    </div>
+
+</body>
+
+</html>

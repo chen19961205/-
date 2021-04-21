@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function ajax(options) {
+            var defaults = {
+                type: 'get',
+                url: 'http://localhost:3000/eight'
+                    // 还有其他默认值
+            };
+            // 使用options中的属性覆盖defaults中的属性
+            Object.assign(defaults, options);
+            var xhr = new XMLHttpRequest();
+            xhr.open(defaults.type, defaults.url);
+            xhr.send();
+            xhr.onload = function() {
+                defaults.success(xhr.responseText);
+            }
+        }
+        ajax({
+            type: 'get',
+            url: 'http://localhost:3000/eight',
+            data: {
+                name: 'zhangsan',
+                age: 18
+            },
+            success: function(data) {
+                console.log('hello,it is' + data);
+            },
+            reject: function() {
+
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

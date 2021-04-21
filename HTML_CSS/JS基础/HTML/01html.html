@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../css/base.css">
+</head>
+
+
+<body>
+
+    <br>------------------------五彩导航栏案例----------------------------------------<br>
+    <div class="nav">
+        <a href="#">五彩导航</a>
+        <a href="#">五彩导航</a>
+        <a href="#">五彩导航</a>
+        <a href="#">五彩导航</a>
+        <a href="#">五彩导航</a>
+
+    </div>
+    <br>------------------------表格----------------------------------------<br>
+    <!-- 表格 -->
+    <table align="center" width="200px" height="100px" border="5px" cellspadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>表头单元格</th>
+                <th>表头单元格</th>
+                <th colspan="2">合并单元格主题</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>内容单元格</td>
+                <td>内容单元格</td>
+                <td>合并单元格内容</td>
+                <td>neirong</td>
+            </tr>
+        </tbody>
+    </table>
+    <!--自定义列表  -->
+    <br> ----------------------------------------------------------------
+    <br>
+    <!-- 自定义列表，dt dd属于同级 -->
+    <dl>
+        <dt>名词</dt>
+        <dd>名词解释1</dd>
+        <dd>名词解释2</dd>
+    </dl>
+    <br> ----------------------------------------------------------------
+    <br>
+    <!-- radio单选框的应用 ；label按钮使得增大作用范围，点击图片也会作用到radio按钮-->
+    <input type="radio" name="sex" id="nan"> <label for="nan"> <img src="picture1.jpg">男</label>
+    <input type="radio" name="sex" id="nv"> <label for="nv"><img src="picture1.jpg">女</label>
+    <br> ----------------------------------------------------------------
+    <br>
+    <!-- 提交表单 -->
+    <!-- 单个表单单个按键提交 -->
+    <form action="xxx.php" method="GET">
+        用户名：<input type="text" value="用户名"> 密码：
+        <input type="password" value="密码">
+        <br>
+        <input type="button" value="获取某个数据" onclick="fun()"> &nbsp;&nbsp;&nbsp;
+        <input type="submit" value="提交">
+    </form>
+    <br> ----------------------------------------------------------------
+    <br>
+    <!-- 显示注册页面其中部分控件使用 -->
+    <table>
+        <tr>
+            <td>
+                用户名：
+                <input type="text" value="用户名">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                密&nbsp;码:
+                <input type="password" value="密码">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                注册日期：&nbsp;
+                <select>
+                    <option>--请选择年份--</option>
+                    <option>2001</option>
+                    <option>2002</option>
+                </select>
+                <select>
+                    <option>--请选择月份--</option>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <br>----------------------------------------------------------------
+    <br>
+    <!-- 显示图标，取地址符id地址 十进制数据   &#十进制数 -->
+    &#9760;
+    <script>
+        console.log("\u2620");
+    </script>
+
+    <h6 class="TestFont">测试字体效果，严格按照字体类型、权重、大小/行高、文字样式（family）</h6>
+    <div class="testFuheSelect">
+        <a>链接到另一处</a>
+        <p>包子</p>
+        <ul>
+            无序列表
+            <li>
+                1.子列表1
+                <p>饺子</p>
+
+            </li>
+            <li>2.子列表2</li>
+        </ul>
+    </div>
+    <br>----------------------------------------------------------------
+    <br>
+    <!-- :focus     当表单元素获得焦点，文本框显示所设置颜色 -->
+    <style>
+        input:focus {
+            background-color: pink;
+        }
+    </style>
+    <div>
+
+    </div>
+
+    <input type="text">
+    <br>
+    <input type="text">
+    <br>
+    <input type="text">
+
+    <br>----------------小米侧边栏案例------------------------------------------------
+    <br>
+    <style>
+        .top {
+            width: 1227px;
+            height: 460px;
+        }
+        
+        #top_left {
+            width: 200px;
+            height: 460px;
+            background-color: rgb(37, 33, 33);
+            float: left;
+        }
+        /* 小米子元素 */
+        
+        #top_left>a {
+            width: 200px;
+            height: 66px;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            color: white;
+            /* 文字的行高=盒子行高 实现文字垂直居中 */
+            line-height: 66px;
+        }
+        
+        #top_left>a:hover {
+            background-color: rgb(245, 45, 45);
+        }
+        
+        .top_right {
+            height: 460px;
+            width: 988px;
+            background-color: red;
+            float: left;
+        }
+    </style>
+    <div class="top">
+        <div id="top_left">
+            <a href="#">手机&nbsp;电话卡 </a>
+            <a href="#">电视&nbsp;盒子</a>
+            <a href="#">笔记本&nbsp;平板</a>
+            <a href="#">出行&nbsp;穿戴</a>
+            <a href="#">智能&nbsp;路由器</a>
+            <a href="#">健康&nbsp;儿童</a>
+            <a href="#">耳机&nbsp;音响</a>
+        </div>
+        <div class="top_right">
+            <img src="img/xiaomi.jpg" alt="小米当前热品">
+        </div>
+    </div>
+
+    <br>-----------------------背景精准定位-----------------------------------------
+    <br>
+    <div class="testPosition">
+        <h1>第1行</h1>
+        <h1>第2行</h1>
+        <h1>第3行</h1>
+        <h1>第4行</h1>
+        <h1>第5行</h1>
+        <h1>第6行</h1>
+        <h1>第7行</h1>
+        <h1>第8行</h1>
+        <h1>第9行</h1>
+        <h1>第10行</h1>
+        <h1>第8行</h1>
+        <h1>第9行</h1>
+        <h1>第10行</h1>
+        <h1>第8行</h1>
+        <h1>第9行</h1>
+        <h1>第10行</h1>
+    </div>
+
+
+</body>
+
+</html>

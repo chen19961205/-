@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排他思想</title>
+    <script src="../js/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        button {
+            width: 50px;
+            height: 25px;
+            margin-left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <script>
+        $(function() {
+            //1隐式迭代，给所有按钮都绑定了点击事件
+            $("button").click(function() {
+                //给当前元素变化颜色
+                $(this).css("background", "pink");
+                $(this).siblings("button").css("background", "");
+
+            });
+        });
+    </script>
+</body>
+
+</html>

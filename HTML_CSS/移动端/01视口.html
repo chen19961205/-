@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 宽度，初始化缩放比，最大缩放比，最小缩放比，用户是否可以缩放 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>Document</title>
+</head>
+<style>
+    .doubleImage {
+        width: 170px;
+        height: 170px;
+        border: 2px solid red;
+        background: url(../JS基础/img/wangzhebiaoqian.jpg) no-repeat;
+        /* 修改背景图片的尺寸，背景缩放 
+         background-size: 170px 60px;*/
+        /* 
+        background-size:cover;  等比例缩放，等到完全覆盖掉盒子，长宽都要适合，会出现超出部分
+         background-size:contain; 等比例缩放，只要长宽适合一个，就可以，但是可能会出现空白部分 */
+        background-size: cover;
+    }
+    
+    img:nth-child(2) {
+        width: 50px;
+        height: 50px;
+    }
+</style>
+
+<body>
+    <!--布局视口(浏览器默认是980px)、视觉视口，理想视口  -->
+    <!-- 物理像素 一个手机分辨率是780*1024，这表明在行上有780个小颗粒   pc端1px为一个物理像素，但是在移动端都不相同
+    一个px能显示的物理像素点的个数，称为物理像素比 -->
+    <!-- 倍图是解决图片因为放大造成的模糊，二倍图意思是我们准备的图片要比实际需要的图片大两倍，这样手机进行放大或者缩放就不会出现模糊 -->
+    <img src="../JS基础/img/xiaomi.jpg" alt="">
+    <img src="../JS基础/img/xiaomi.jpg" alt="">
+
+
+    <!-- 二倍图案例 -->
+    <div class="doubleImage">
+        二
+    </div>
+</body>
+
+</html>

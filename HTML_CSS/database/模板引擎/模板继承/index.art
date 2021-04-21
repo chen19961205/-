@@ -1,0 +1,6 @@
+{{extend './骨架.art'}} {{block 'head'}}
+<link rel="stylesheet" href="style.css"> {{/block}} {{block 'content'}}
+<p>这是一个awesome 页面</p>
+<p>{{msg}}</p>
+<!-- dataFormat为模板，第一个参数是要传入的数，第二个参数是要格式化的最终格式 -->
+{{dataFormat(time,'yyyy-mm-dd')}} {{/block}}

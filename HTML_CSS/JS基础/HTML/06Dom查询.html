@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            //1 获取body属性
+            var body = document.getElementsByTagName("body")[0];
+            //2 获取body属性
+            var body2 = document.body;
+            console.log(body2);
+            //1 获取html
+            var de = document.documentElement;
+            //页面所有元素
+            var all = document.all;
+            //获取class为box1中的所有div属性
+            //可以根据一个css选择器查询一个元素节点对象,只查询一个
+            //querySelectorAll返回的数组（无论里面数据有多少个），querySelector永远返回第一个
+            var div = document.querySelector(".box1 div");
+            console.log(div.innerHTML);
+            var div1 = document.querySelectorAll(".box1");
+            console.log(div1.length);
+            for (var i in div1) {
+                console.log(div1[i].innerHTML);
+            }
+
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="box1">
+        1
+        <div>我是box1中的div。</div>
+    </div>
+    <div class="box1">
+        我2
+        <div>我是box1中的div。</div>
+    </div>
+    <div class="box1">
+        我3
+        <div>我是box1中的div。</div>
+    </div>
+
+</body>
+
+</html>

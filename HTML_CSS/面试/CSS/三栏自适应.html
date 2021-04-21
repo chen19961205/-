@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 绝对定位布局 */
+        
+        .d1 {
+            height: 200px;
+            width: 500px;
+            border: 1px solid rgb(10, 10, 10);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .d11,
+        .d13 {
+            width: 100px;
+            height: 200px;
+            background-color: #bfb8ff;
+            position: absolute;
+            top: 0px;
+        }
+        
+        .d1 .d11 {
+            /* left: 0; */
+            float: left;
+        }
+        
+        .d1 .d13 {
+            right: 0;
+        }
+        
+        .d1 .d12 {
+            background-color: orangered;
+            height: 200px;
+            /* margin: 0px 10px; */
+        }
+        /* w网格布局---------------------------------------------- */
+        
+        .d2 {
+            margin-top: 50px;
+            display: grid;
+            height: 200px;
+            /* 网格布局 */
+            /* grid-template-columns: 100px auto 100px; */
+            grid-template-columns: 25% auto 25%;
+            border: 1px solid black
+        }
+        
+        .d21,
+        .d23 {
+            background-color: blueviolet;
+        }
+        
+        .d22 {
+            background-color: orangered;
+        }
+        /* 双飞翼布局------------------------ */
+        
+        .d3 {
+            height: 200px;
+            margin-top: 20px;
+        }
+        
+        .d3>div {
+            float: left;
+        }
+        
+        .d32 {
+            /* zuo */
+            width: 200px;
+            margin-left: -100%;
+            background-color: red;
+        }
+        
+        .d33 {
+            /* you */
+            width: 200px;
+            margin-left: -200px;
+            background-color: rgb(0, 255, 21);
+        }
+        
+        .con {
+            background-color: rgb(255, 0, 179);
+            width: 100%;
+        }
+        
+        .d31 {
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+        /* 圣杯布局 */
+        
+        .d4 {
+            height: 200px;
+            margin-top: 20px;
+            display: flex;
+        }
+        
+        .d41,
+        .d43 {
+            position: absolute;
+            width: 100px;
+            background-color: red;
+            height: 50px;
+        }
+        
+        .d41 {
+            left: 0;
+        }
+        
+        .d43 {
+            right: 0;
+        }
+        
+        .d42 {
+            background-color: rgb(0, 255, 21);
+            flex: 1;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>绝对定位布局</p>
+    <div class="d1">
+        <div class="d11">我是左边</div>
+        <div class="d12">我是中间</div>
+        <div class="d13">我是右边</div>
+    </div>
+    <p>网格布局</p>
+    <div class="d2">
+        <div class="d21">我是左边</div>
+        <div class="d22">我是中间</div>
+        <div class="d23">我是右边</div>
+    </div>
+    <p>双飞翼布局</p>
+    <div class="d3">
+        <div class="con">
+            <div class="d31">我是中间</div>
+        </div>
+
+        <div class="d32">我是左边</div>
+        <div class="d33">我是右边</div>
+    </div>
+
+    <p>flex布局</p>
+    <div class="d4">
+        <div class="d41">我是左边</div>
+        <div class="d42">我是中间</div>
+        <div class="d43">我是右边</div>
+    </div>
+    <p>表格布局</p>
+    <div class="d4" style="width: 100%; display: table; height:50px;">
+        <div class="d41" style="width: 200px; display: table-cell; background-color: red;">我是左边</div>
+        <div class="d42" style=" display: table-cell; background-color: rgb(55, 0, 255);">我是中间</div>
+        <div class="d43" style="width: 200px; display: table-cell; background-color: red;">我是右边</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .wrapper {
+            width: 260px;
+            height: 278px;
+            border: 1px solid pink;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        #content,
+        #left {
+            float: left;
+        }
+        
+        #left {
+            width: 50px;
+        }
+        
+        #left li {
+            width: 50px;
+            height: 30px;
+            border-bottom: 1px solid pink;
+            border-right: 1px solid pink;
+            background: url(../img/lili.jpg) repeat-x;
+        }
+        
+        #left li a {
+            font-size: 12px;
+            width: 100%;
+            height: 100%;
+            line-height: 30px;
+            padding-left: 3px;
+        }
+        
+        #content div {
+            margin-top: 8px;
+            margin-left: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul id="left">
+            <li><a href="#">女靴</a></li>
+            <li><a href="#">雪地靴</a></li>
+            <li><a href="#">冬裙</a></li>
+            <li><a href="#">呢大衣</a></li>
+            <li><a href="#">毛衣</a></li>
+            <li><a href="#">棉服</a></li>
+            <li><a href="#">女裤</a></li>
+            <li><a href="#">羽绒服</a></li>
+            <li><a href="#">牛仔裤</a></li>
+        </ul>
+        <div id="content">
+            <div>
+                <a href="#"><img src="../img/女靴.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="../img/雪地靴.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="../img/冬裙.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="../img/呢大衣.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="../img/毛衣.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="../img/棉服.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="../img/女裤.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="../img/羽绒服.jpg" width="200" height="250" /></a>
+            </div>
+            <div>
+                <a href="#"><img src="../img/牛仔裤.jpg" width="200" height="250" /></a>
+            </div>
+
+        </div>
+
+
+    </div>
+    <script>
+        $(function() {
+            $("#left li").mouseover(function() {
+                var index = $(this).index(); //获得当前小li索引号
+                console.log(index);
+                $("#content div").eq(index).show().siblings().hide();
+
+            });
+        });
+    </script>
+</body>
+
+</html>

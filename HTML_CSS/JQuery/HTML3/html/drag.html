@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #div1 {
+            width: 350px;
+            height: 70px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+    <script>
+        function allowDrop(ev) {
+            ev.preventDefault();
+            console.log("dragOver触发");
+        }
+
+        function drag(ev) {
+            console.log("dragstart触发");
+            ev.dataTransfer.setData("Text", ev.target.id);
+            console.log(ev.target.id); //目标元素是图片
+
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+
+        function deagLeave(ev) {
+            console.log("drag离开触发");
+        }
+
+        function enterD() {
+            console.log("drag进入触发");
+        }
+    </script>
+</head>
+
+<body>
+
+    <p>拖动 RUNOOB.COM 图片到矩形框中:</p>
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" ondragleave="deagLeave(event)" ondragenter="enterD(event)"></div>
+    <br>
+    <img loading="lazy" id="drag1" src="01.jpg" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+</body>
+
+</html>

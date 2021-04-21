@@ -1,0 +1,43 @@
+.nav a {
+    text-decoration: none;
+    display: inline-block;
+    background: pink;
+    width: 70px;
+    height: 30px;
+    /* 实现文字水平垂直居中 */
+    line-height: 30px;
+    text-align: center;
+    /* background-position: center,center; */
+}
+
+.nav a:hover {
+    background-color: red;
+}
+
+.TestFont {
+    /* font: italic 100 larger Courier; */
+    /* font-style: italic;
+    font-weight: 100;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace; */
+    font: 20px '黑体';
+}
+
+.testFuheSelect>ul p {
+    color: red;
+}
+
+
+/* 背景设置 */
+
+.testPosition {
+    /* width: 500px;
+    height: 500px; */
+    background-color: red;
+    background-image: url(../img/backgroud.jpg);
+    background-repeat: repeat-y;
+    background-position: center center;
+    background-attachment: fixed;
+    /* 背景复合，背景复合的顺序没有严格要求 */
+    /* 背景颜色 */
+}

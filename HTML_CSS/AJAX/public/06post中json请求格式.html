@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p><input type="text" id="namee" placeholder="请输入名字"></p>
+    <p><input type="text" id="pwd" placeholder="请输入密码"></p>
+    <p><input type="button" value="提交" id="sub"></p>
+    <script>
+        var namee = document.getElementById('namee');
+        var password = document.getElementById('pwd');
+        var sub = document.getElementById('sub');
+        sub.onclick = function() {
+            //获取值
+            var nameValue = namee.value;
+            var pwdValue = password.value;
+            //创建ajax对象
+            var xhr = new XMLHttpRequest();
+            //拼接请求，get要自己拼接请求参数
+            var params = {
+                name: nameValue,
+                pwd: pwdValue
+            };
+
+            xhr.open('post', 'http://localhost:3000/six');
+            //设置请求参数的类型(post中必须设置，第二个参数值一定)
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.send(JSON.stringify(params));
+
+            //获取服务端响应方式,onload事件和onreadyStatechange事件
+            xhr.onload = function() {
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+</body>
+
+</html>

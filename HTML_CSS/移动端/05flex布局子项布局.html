@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子项布局-圣杯布局</title>
+    <style>
+        div {
+            width: 60%;
+            height: 300px;
+            background-color: pink;
+            /* 父元素设置布局格式 */
+            display: flex;
+            margin: 20px auto;
+        }
+        
+        div span:nth-child(1) {
+            width: 50px;
+            height: 100px;
+            background-color: red;
+        }
+        
+        div span:nth-child(5) {
+            width: 50px;
+            height: 100px;
+            background-color: red;
+        }
+        /* 圣杯布局,左右固定，中间活动 */
+        
+        div span {
+            background-color: green;
+            height: 100px;
+            /* 不设置宽度 */
+            /* 先在最左边最右边设置一个固定的span，剩余的盒子再判断份数 */
+            /* 即剩余盒子占一整份,就是剩余盒子把所有的空间都占据了 */
+            flex: 2;
+        }
+        
+        p {
+            width: 60%;
+            height: 300px;
+            background-color: pink;
+            display: flex;
+            margin: 0 auto;
+        }
+        
+        p span {
+            background-color: green;
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        
+        p span:nth-child(3) {
+            /* 将自己span放到父元素底部, */
+            align-self: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+    <p>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </p>
+</body>
+
+</html>

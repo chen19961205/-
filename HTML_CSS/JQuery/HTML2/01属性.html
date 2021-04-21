@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery.min.js"></script>
+</head>
+
+<body>
+    <pre>
+        获取属性值: prop('属性名')
+        设置属性值prop("属性名","属性值")
+        attr 设置获取元素自定义属性值attr
+        该方法也可以获取h5自定义属性，以data-xxx开头的属性
+        data()数据缓存，当刷新界面之前存放数据就会被移除，数据放在内存里
+    </pre>
+
+    <a href="http://www.itcast.cn" title="都挺好">都挺好</a>
+    <input type="checkbox" name="" id="" checked>
+    <div index="1" data-index="2">我是div</div>
+    <span>123</span>
+    <script>
+        $(function() {
+            //prop
+            console.log($("a").prop("href"));
+            $("a").prop("title", "我们都挺好");
+            //当事件的值发生改变时候会触发change函数
+            $("input").change(function() {
+                alert("改变了");
+                console.log($(this).prop("checked"));
+            });
+            $("div").text("123");
+            console.log($("div").text());
+            console.log($("input").val());
+            //元素自定义属性通过attr（）
+            console.log($("a").attr("href"));
+            //数据缓存。数据元素是存放在元素的内存里面
+            $("a").data("uname", "andy");
+            console.log($("a").data("uname"));
+            console.log($("div").data("index"));
+            //这个方法获取data-index自定义属性，不用写data，而且返回的是数字型
+        })
+    </script>
+
+</body>
+
+</html>

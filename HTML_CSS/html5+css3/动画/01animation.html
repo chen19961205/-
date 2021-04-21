@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 关键帧 */
+        
+        @keyframes move {
+            /* 动画序列 */
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(100px, 0px);
+                animation-play-state: paused;
+            }
+            100% {
+                transform: translate(100px, 100px);
+            }
+        }
+        
+        .d1 {
+            width: 50px;
+            height: 50px;
+            background-color: rebeccapurple;
+            animation-name: move;
+            animation-duration: 2s;
+            /* animation-timing-function: ease-in-out; */
+            /* animation-fill-mode: both; */
+            /* animation-fill-mode: backwards; */
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            animation-iteration-count: 3;
+            /* animation-direction: alternate; */
+            /* animation-direction: reverse; */
+            /* animation-play-state: running; */
+            /* animation-play-state: paused; */
+            /* animation-fill-mode: both; */
+            /* animation-fill-mode: forwards; */
+            /* 逆向播放 */
+        }
+    </style>
+</head>
+
+<body>
+    1.先定义动画。2.使用动画 动画可以自动播放，过渡做不出来
+    <br> 动画序列: 0%是动画开始，100%动画完成，这样的规则是动画序列 百分比来规定变化发生的时间，或者用关键词'form'或者'to'
+    <div class="d1"></div>
+</body>
+
+</html>

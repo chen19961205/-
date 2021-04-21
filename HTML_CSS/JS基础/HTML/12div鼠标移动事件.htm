@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+        }
+        
+        #total {
+            width: 700px;
+            height: 1000px;
+        }
+        
+        #scrollByMouse {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var scrollByMouse = document.getElementById("scrollByMouse");
+            document.onmousemove = function(event) {
+                var left = event.clientX; //ie8以下不支持  //鼠标到达的可见坐标
+                var top = event.clientY;
+                console.log(left + "," + top);
+                // !!一个是按照body的父元素来看，一个是根据html的文档来看其中html是在ie8中支持的
+                var st = document.body.scrollTop || document.documentElement.scrollTop;
+                var sl = document.body.scrollLeft || document.documentElement.scrollLeft;
+                scrollByMouse.style.left = left + sl + "px";
+                scrollByMouse.style.top = top + st + "px";
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <div id="total">
+        <div id="scrollByMouse"></div>
+    </div>
+
+</body>
+
+</html>

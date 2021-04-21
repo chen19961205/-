@@ -1,0 +1,5 @@
+1. Jquery入口函数等着DOM渲染完毕即可执行内部代码，不必等到所以外部资源加载完毕，JQuery帮我们完成了封装
+2.入口函数相当于js中的DOMContentLoaded，不同于原生js中的load，load是等页面文档，外部的js文件，css文件，图片加载完毕才执行内部代码
+
+jquery对象转换为DOM对象   $('video')[0].play();    或者$('video').get(0).play();
+jquery对象 var Myvideo=document.querySelector('video');     $(Myvideo).play();
